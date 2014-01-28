@@ -1,0 +1,14 @@
+#!/usr/bin/expect -f
+
+set password [exec cat ~/scripts/list.pw]
+set host [lindex $argv 0]
+set command [lindex $argv 1]
+set timeout -1
+spawn -noecho ssh -o ConnectTimeout=30 -o StrictHostKeyChecking=no root@$host { echo "HOST: "$HOSTNAME "--" $(date); } $command 
+match_max 100000
+expect  "assword: "
+send -- $password\r
+expect eof
+#expect  "Are you sure you want to continue connecting (yes/no)? "
+#send -- "y\r"
+#expect eof

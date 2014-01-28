@@ -9,6 +9,3 @@ match_max 100000
 expect  "assword: "
 send -- $password\r
 expect eof
-#expect  "Are you sure you want to continue connecting (yes/no)? "
-#send -- "y\r"
-#expect eof
